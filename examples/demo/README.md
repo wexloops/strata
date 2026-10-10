@@ -7,4 +7,4 @@
 
 `strata serve` loads this demo into an empty library automatically, so the UI works on first launch without a GPU.
 
-© AXYS / Strangeloop Studios. Included to demonstrate STRATA. The audio is **not** covered by the repository's MIT license and may not be redistributed separately.
+© AXYS. Included to demonstrate STRATA. The audio is **not** covered by the repository's MIT license and may not be redistributed separately.
