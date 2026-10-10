@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "strata-music"
-version = "0.1.0"
+version = "1.1.0"
 description = "Ensemble music analysis: sections, beats, key, chords, hits, curves. One JSON to drive edits, shows and code."
 readme = "README.md"
 license = {text = "MIT"}

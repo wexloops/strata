@@ -92,7 +92,7 @@ Times are seconds (float, 3 dp). Every list is time-sorted.
 
 ```jsonc
 {
-  "strata": {"version": "0.1.0", "schema": 1, "created": "ISO8601", "profile": "full|commercial-safe"},
+  "strata": {"version": "1.1.0", "schema": 1, "created": "ISO8601", "profile": "full|commercial-safe"},
   "track": {"title": "", "path": "", "id": "sha256[:16]", "duration": 0, "sample_rate": 44100, "channels": 2},
   "provenance": [{"backend": "beat_this", "dimension": "beats", "version": "", "license": "MIT", "nc": false,
                   "ok": true, "error": null, "seconds": 0}],
