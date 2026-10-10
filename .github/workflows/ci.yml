@@ -1,0 +1,25 @@
+name: ci
+on: [push, pull_request]
+jobs:
+  python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - run: sudo apt-get update && sudo apt-get install -y ffmpeg libsndfile1
+      - run: uv venv -p 3.12 .venv
+      - run: |
+          source .venv/bin/activate
+          uv pip install torch torchaudio --index-url https://download.pytorch.org/whl/cpu
+          uv pip install -e vendor/all-in-one
+          uv pip install --no-deps basic-pitch "git+https://github.com/deezer/skey.git" && uv pip install nnAudio cython
+          uv pip install -e ".[dev]"
+          python -m pytest tests -q -m "not gpu"
+  ui:
+    runs-on: ubuntu-latest
+    defaults: { run: { working-directory: ui } }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm ci && npx tsc --noEmit && npx vite build

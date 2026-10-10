@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "strata-music"
+version = "0.1.0"
+description = "Ensemble music analysis: sections, beats, key, chords, hits, curves. One JSON to drive edits, shows and code."
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.12"
+dependencies = [
+  "numpy<2.3", "scipy", "soundfile", "librosa>=0.10", "pyloudnorm",
+  "torch", "torchaudio", "demucs", "beat-this", "hydra-core", "omegaconf", "huggingface_hub",
+  "onnxruntime", "pretty_midi", "mir_eval", "resampy", "mido",
+  "cython", "madmom @ git+https://github.com/CPJKU/madmom.git",
+  "fastapi", "uvicorn", "websockets", "python-multipart", "python-osc", "pillow",
+]
+
+[project.optional-dependencies]
+tags = ["transformers"]
+lyrics = ["faster-whisper"]
+dev = ["pytest", "httpx"]
+
+[project.scripts]
+strata = "strata.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["strata*"]
+
+[tool.setuptools.package-data]
+strata = ["web/**/*", "backends/btc/*.pt", "backends/btc/*.yaml"]
+
+[tool.pytest.ini_options]
+markers = ["gpu: needs CUDA + model weights", "slow: long-running"]
