@@ -19,6 +19,21 @@ strata serve --open                      # color-coded timeline + visualizer at 
 
 Try it without a GPU: `strata serve --open` loads the bundled demo, **AXYS: "Signal Without State"**, with its precomputed analysis.
 
+## Use it from Claude (MCP)
+
+`strata mcp` runs an MCP server on stdio, so Claude Desktop, claude.ai connectors and any MCP client can drive STRATA directly. The tools are `analyze`, `library`, `summary`, `at`, `sections`, `cues`, `beats`, `export`, `live_start`, `live_stop` and `remove`. Ask things like *"where are the drops in this track?"* or *"export Premiere markers for every chorus"*.
+
+Claude Desktop (`claude_desktop_config.json`), Linux / macOS:
+```json
+{ "mcpServers": { "strata": { "command": "/path/to/strata/.venv/bin/strata", "args": ["mcp"] } } }
+```
+Windows with STRATA installed in WSL (Windows paths like `C:\Music\a.wav` are accepted):
+```json
+{ "mcpServers": { "strata": { "command": "wsl.exe",
+  "args": ["-e", "env", "STRATA_HOME=/mnt/c/Users/<you>/STRATA", "/home/<you>/strata/.venv/bin/strata", "mcp"] } } }
+```
+Claude Code users can also install the bundled skill: `cp -r skill/strata ~/.claude/skills/`.
+
 ## Install (Linux / WSL, NVIDIA GPU recommended)
 ```bash
 uv venv -p 3.12 .venv && source .venv/bin/activate

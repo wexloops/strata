@@ -26,6 +26,7 @@ export STRATA_HOME=<library dir>   # optional; default ~/.strata. On WSL, a /mnt
 | OSC playback | `strata live <t> --osc 127.0.0.1:9000 [--at 0] [--listen 9001]` |
 | Web UI | `strata serve --open` -> http://localhost:3090 |
 | Health | `strata doctor`, `strata backends` |
+| MCP server (Claude Desktop, other clients) | `strata mcp` |
 
 `<t>` = analysis.json path, the audio file (looked up by content hash), a track id, or a unique title substring. Audio paths must be analyzed first.
 

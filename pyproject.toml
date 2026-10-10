@@ -14,7 +14,7 @@ dependencies = [
   "torch", "torchaudio", "demucs", "beat-this", "hydra-core", "omegaconf", "huggingface_hub",
   "onnxruntime", "pretty_midi", "mir_eval", "resampy", "mido",
   "cython", "madmom @ git+https://github.com/CPJKU/madmom.git",
-  "fastapi", "uvicorn", "websockets", "python-multipart", "python-osc", "pillow",
+  "fastapi", "uvicorn", "websockets", "mcp>=2.3,<3", "python-multipart", "python-osc", "pillow",
 ]
 
 [project.optional-dependencies]

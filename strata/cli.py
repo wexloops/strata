@@ -142,6 +142,13 @@ def cmd_rm(args) -> int:
     return 0
 
 
+def cmd_mcp(args) -> int:
+    from .mcp_server import main as serve_mcp
+
+    serve_mcp()
+    return 0
+
+
 def cmd_backends(args) -> int:
     from .backends.base import registry
 
@@ -229,6 +236,8 @@ def build_parser() -> argparse.ArgumentParser:
     r = sub.add_parser("rm", help="remove tracks from the library (keeps source audio)")
     r.add_argument("targets", nargs="+", help="track id | audio file | title")
     r.set_defaults(fn=cmd_rm)
+
+    sub.add_parser("mcp", help="run the MCP server on stdio (Claude Desktop, any MCP client)").set_defaults(fn=cmd_mcp)
 
     sub.add_parser("backends", help="list backends").set_defaults(fn=cmd_backends)
     sub.add_parser("doctor", help="check the install").set_defaults(fn=cmd_doctor)
